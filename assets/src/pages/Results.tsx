@@ -1,4 +1,4 @@
-import { Deferred, usePoll } from "@inertiajs/react";
+import { Deferred, Head, usePoll } from "@inertiajs/react";
 import type { Pokemon } from "../types";
 
 type PokemonWithStats = Pokemon & {
@@ -8,11 +8,16 @@ type PokemonWithStats = Pokemon & {
 export default function Results(props: { rankings: PokemonWithStats[] }) {
   usePoll(2000);
   return (
-    <div className="container mx-auto px-4 py-8 text-white">
-      <div className="grid gap-4">
-        <ResultsList rankings={props.rankings} />
+    <>
+      <Head>
+        <title>Roundest - Results</title>
+      </Head>
+      <div className="container mx-auto px-4 py-8 text-white">
+        <div className="grid gap-4">
+          <ResultsList rankings={props.rankings} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

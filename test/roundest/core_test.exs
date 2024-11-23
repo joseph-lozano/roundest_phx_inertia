@@ -11,15 +11,15 @@ defmodule Roundest.CoreTest do
   describe "get_two_random_pokemon/0" do
     test "returns two different Pokemon" do
       # Get two random Pokemon
-      [first, second] = Core.get_two_random_pokemon()
+      {first, second} = Core.get_two_random_pokemon()
 
       # Assert we got two different Pokemon
       assert first.id != second.id
     end
 
     test "returns exactly two Pokemon" do
-      result = Core.get_two_random_pokemon()
-      assert length(result) == 2
+      random_pokemon = Core.get_two_random_pokemon()
+      assert tuple_size(random_pokemon) == 2
     end
   end
 end

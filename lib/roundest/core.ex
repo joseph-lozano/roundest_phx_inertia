@@ -5,8 +5,11 @@ defmodule Roundest.Core do
   import Ecto.Query
 
   def get_two_random_pokemon do
-    from(p in Pokemon, order_by: fragment("RANDOM()"), limit: 2)
-    |> Roundest.Repo.all()
+    [a, b] =
+      from(p in Pokemon, order_by: fragment("RANDOM()"), limit: 2)
+      |> Roundest.Repo.all()
+
+    {a, b}
   end
 
   def cast_vote(%{"winner_id" => winner_id, "loser_id" => loser_id}) do
