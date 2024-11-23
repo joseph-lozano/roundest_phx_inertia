@@ -24,7 +24,15 @@ config :roundest, RoundestWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "SMVAiM754L+wMeaaPTrt+LTnP2jJdKRSF0kIx0oxiaGGzBcvHwE8OptI2E7aSjC9",
-  watchers: []
+  watchers: [
+    bash: [
+      "run.sh",
+      "node_modules/.bin/vite",
+      "dev",
+      cd: Path.expand("../assets", __DIR__),
+      env: %{"NODE_ENV" => "development"}
+    ]
+  ]
 
 # ## SSL Support
 #

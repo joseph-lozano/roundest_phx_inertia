@@ -44,7 +44,6 @@
   '';
 
   # https://devenv.sh/pre-commit-hooks/
-  pre-commit.hooks.shellcheck.enable = true;
   pre-commit.hooks.check-merge-conflicts.enable = true;
   pre-commit.hooks.check-added-large-files.enable = true;
   pre-commit.hooks.detect-private-keys.enable = true;

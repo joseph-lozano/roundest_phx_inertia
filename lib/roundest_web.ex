@@ -43,6 +43,7 @@ defmodule RoundestWeb do
         layouts: [html: RoundestWeb.Layouts]
 
       import Plug.Conn
+      import Inertia.Controller
 
       unquote(verified_routes())
     end
@@ -73,6 +74,8 @@ defmodule RoundestWeb do
       import Phoenix.Controller,
         only: [get_csrf_token: 0, view_module: 1, view_template: 1]
 
+      import Inertia.HTML
+
       # Include general helpers for rendering HTML
       unquote(html_helpers())
     end
@@ -82,8 +85,6 @@ defmodule RoundestWeb do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
-      import RoundestWeb.CoreComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
