@@ -1,6 +1,7 @@
 defmodule Roundest.Core.Vote do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Roundest.Core.Pokemon
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
