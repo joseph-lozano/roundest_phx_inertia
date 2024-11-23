@@ -37,3 +37,4 @@ devenv.local.nix
 
 # assets
 /priv/static/
+/priv/ssr.js

@@ -15,6 +15,7 @@ defmodule Roundest.Application do
       # Start a worker by calling: Roundest.Worker.start_link(arg)
       # {Roundest.Worker, arg},
       # Start to serve requests, typically the last entry
+      {Inertia.SSR, path: Application.app_dir(:roundest, "priv/")},
       RoundestWeb.Endpoint
     ]
 

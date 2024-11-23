@@ -32,7 +32,9 @@ config :phoenix, :json_library, Jason
 
 config :inertia,
   endpoint: RoundestWeb.Endpoint,
-  camelize_props: true
+  camelize_props: true,
+  ssr: true,
+  raise_on_ssr_failure: config_env() != :prod
 
 config :roundest, :env, config_env()
 

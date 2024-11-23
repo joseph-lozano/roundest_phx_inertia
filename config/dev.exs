@@ -31,6 +31,14 @@ config :roundest, RoundestWeb.Endpoint,
       "dev",
       cd: Path.expand("../assets", __DIR__),
       env: %{"NODE_ENV" => "development"}
+    ],
+    bash: [
+      "run.sh",
+      "node_modules/.bin/vite",
+      "build",
+      "--ssr",
+      cd: Path.expand("../assets", __DIR__),
+      env: %{"NODE_ENV" => "production"}
     ]
   ]
 
