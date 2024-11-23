@@ -16,7 +16,7 @@ export default function Home({
     <div className="flex flex-col items-center">
       <div className="relative h-4 w-full">
         {flash.info && (
-          <div className="absolute bg-blue-300 text-black font-bold w-full text-center py-2">
+          <div className="absolute bg-purple-300 text-black font-bold w-full text-center py-2">
             {flash.info}
           </div>
         )}
@@ -48,7 +48,7 @@ export default function Home({
                 );
               }}
             >
-              <button className="px-8 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors">
+              <button className="px-8 py-3 bg-purple-500 text-white rounded-lg text-lg font-semibold hover:bg-purple-600 transition-colors">
                 Vote
               </button>
             </form>
@@ -78,7 +78,7 @@ export default function Home({
                 );
               }}
             >
-              <button className="px-8 py-3 bg-blue-500 text-white rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors">
+              <button className="px-8 py-3 bg-purple-500 text-white rounded-lg text-lg font-semibold hover:bg-purple-600 transition-colors">
                 Vote
               </button>
             </form>

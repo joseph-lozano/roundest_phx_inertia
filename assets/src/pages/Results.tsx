@@ -37,7 +37,7 @@ function ResultsList({ rankings }: { rankings: PokemonWithStats[] }) {
       </div>
 
       <div className="text-right">
-        <div className="text-2xl font-bold text-blue-400">
+        <div className="text-2xl font-bold text-purple-400">
           {(pokemon.stats.winRate * 100).toFixed(1)}%
         </div>
         <div className="text-sm text-gray-400">

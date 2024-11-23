@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex items-center justify-between">
           <div className="flex items-baseline">
             <Link href="/" className="font-bold text-3xl">
-              round<span className="text-blue-300">est</span>
+              round<span className="text-purple-300">est</span>
               <span className="text-gray-400 font-extralight pl-2 text-2xl">
                 (Phoenix Inertia)
               </span>
