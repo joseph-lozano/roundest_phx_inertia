@@ -1,4 +1,4 @@
-import { Deferred, Head, usePoll } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import type { Pokemon } from "../types";
 
 type PokemonWithStats = Pokemon & {
@@ -6,7 +6,6 @@ type PokemonWithStats = Pokemon & {
 };
 
 export default function Results(props: { rankings: PokemonWithStats[] }) {
-  usePoll(2000);
   return (
     <>
       <Head>
@@ -22,7 +21,6 @@ export default function Results(props: { rankings: PokemonWithStats[] }) {
 }
 
 function ResultsList({ rankings }: { rankings: PokemonWithStats[] }) {
-  console.log(rankings);
   return rankings.map((pokemon, index) => (
     <div
       key={pokemon.pokemonId}

@@ -30,29 +30,34 @@ defmodule Roundest.Core do
       repo.insert(%Vote{winner_id: winner.id, loser_id: loser.id})
     end)
     |> Roundest.Repo.transaction()
+    |> tap(fn _ -> Cachex.del(:results_cache, "rankings") end)
+    |> tap(fn _ -> Phoenix.PubSub.broadcast(Roundest.PubSub, "results", "update") end)
   end
 
   def get_rankings do
-    from(p in Pokemon,
-      left_join: w in assoc(p, :won_votes),
-      left_join: l in assoc(p, :lost_votes),
-      group_by: [p.id, p.pokemon_id, p.name],
-      having: count(w.id) + count(l.id) > 0,
-      select: %{
-        id: p.id,
-        pokemonId: p.pokemon_id,
-        name: p.name,
-        stats: %{
-          wins: count(w.id),
-          losses: count(l.id),
-          winRate: fragment("COUNT(?)::float / (COUNT(?) + COUNT(?))", w.id, w.id, l.id)
-        }
-      },
-      order_by: [
-        desc: fragment("COUNT(?)::float / (COUNT(?) + COUNT(?))", w.id, w.id, l.id),
-        desc: count(w.id)
-      ]
-    )
-    |> Repo.all()
+    Cachex.fetch(:results_cache, "rankings", fn ->
+      from(p in Pokemon,
+        left_join: w in assoc(p, :won_votes),
+        left_join: l in assoc(p, :lost_votes),
+        group_by: [p.id, p.pokemon_id, p.name],
+        having: count(w.id) + count(l.id) > 0,
+        select: %{
+          id: p.id,
+          pokemonId: p.pokemon_id,
+          name: p.name,
+          stats: %{
+            wins: count(w.id),
+            losses: count(l.id),
+            winRate: fragment("COUNT(?)::float / (COUNT(?) + COUNT(?))", w.id, w.id, l.id)
+          }
+        },
+        order_by: [
+          desc: fragment("COUNT(?)::float / (COUNT(?) + COUNT(?))", w.id, w.id, l.id),
+          desc: count(w.id)
+        ]
+      )
+      |> Repo.all()
+    end)
+    |> then(fn {_, rankings} -> rankings end)
   end
 end

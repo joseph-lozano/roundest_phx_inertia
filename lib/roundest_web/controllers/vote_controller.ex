@@ -4,7 +4,7 @@ defmodule RoundestWeb.VoteController do
   alias Roundest.Core
 
   def index(conn, _params) do
-    render_inertia(conn, "Results", %{"rankings" => Core.get_rankings()})
+    render_inertia(conn, "Results", %{rankings: Core.get_rankings()})
   end
 
   def create(conn, params) do

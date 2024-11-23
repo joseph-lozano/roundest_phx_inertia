@@ -3,6 +3,7 @@ import axios from "axios";
 import { hydrateRoot } from "react-dom/client";
 import Layout from "./components/Layout";
 import "./main.css";
+import "./lib/user_socket";
 
 axios.defaults.xsrfHeaderName = "x-csrf-token";
 
