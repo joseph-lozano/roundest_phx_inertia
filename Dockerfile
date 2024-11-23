@@ -50,7 +50,7 @@ COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
 COPY assets/package.json assets/package-lock.json ./assets/
-RUN npm install --prefix assets
+RUN npm ci --prefix assets --no-fund --no-audit
 
 COPY priv priv
 COPY lib lib
