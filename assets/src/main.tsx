@@ -1,17 +1,26 @@
-import { createInertiaApp } from '@inertiajs/react'
-import { createRoot } from 'react-dom/client'
-import axios from 'axios'
-import './main.css'
+import { createInertiaApp } from "@inertiajs/react";
+import axios from "axios";
+import { createRoot } from "react-dom/client";
+import Layout from "./components/Layout";
+import "./main.css";
 
 axios.defaults.xsrfHeaderName = "x-csrf-token";
 
+type Page = {
+  default: {
+    layout: (page: any) => any;
+  };
+};
+
 createInertiaApp({
-  resolve: name => {
-    const pages = import.meta.glob('./pages/**/*.tsx', { eager: true })
-    console.log(name, pages, pages[`./pages/${name}.tsx`])
-    return pages[`./pages/${name}.tsx`]
+  resolve: (name) => {
+    const pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
+    const page = pages[`./pages/${name}.tsx`] as Page;
+    page.default.layout =
+      page.default.layout || ((page) => <Layout children={page} />);
+    return page;
   },
   setup({ el, App, props }) {
-    createRoot(el).render(<App {...props} />)
+    createRoot(el).render(<App {...props} />);
   },
-})
+});

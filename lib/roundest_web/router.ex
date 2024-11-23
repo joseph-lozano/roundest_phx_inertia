@@ -20,6 +20,9 @@ defmodule RoundestWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    post "/vote/:winner_id/:loser_id", VoteController, :create
+    get "/results", VoteController, :index
   end
 
   # Other scopes may use custom stacks.

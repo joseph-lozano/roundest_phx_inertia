@@ -9,7 +9,7 @@ import Config
 
 config :roundest,
   ecto_repos: [Roundest.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime, binary_id: true]
 
 # Configures the endpoint
 config :roundest, RoundestWeb.Endpoint,

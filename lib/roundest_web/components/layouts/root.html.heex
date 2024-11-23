@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="[scrollbar-gutter:stable]">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,15 +14,17 @@
         window.$RefreshSig$ = () => (type) => type
         window.__vite_plugin_react_preamble_installed__ = true
       </script>
-      <script type="module" src="http://localhost:5173/@vite/client"></script>
-      <script type="module" src="http://localhost:5173/src/main.tsx"></script>
+      <script type="module" src="http://localhost:5173/@vite/client">
+      </script>
+      <script type="module" src="http://localhost:5173/src/main.tsx">
+      </script>
     <% else %>
       <script defer phx-track-static type="text/javascript" src={~p"/assets/main.js"}>
       </script>
       <link rel="stylesheet" href={~p"/assets/main.css"} />
     <% end %>
   </head>
-  <body class="bg-white">
+  <body class="antialiased bg-gray-950 text-white flex flex-col justify-between min-h-screen border-t-2 border-blue-300">
     <%= @inner_content %>
   </body>
 </html>
