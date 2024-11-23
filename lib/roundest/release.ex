@@ -5,10 +5,6 @@ defmodule Roundest.Release do
   """
   @app :roundest
 
-  def seed do
-    Application.ensure_all_started(:roundest_phoenix)
-  end
-
   def migrate do
     load_app()
 
